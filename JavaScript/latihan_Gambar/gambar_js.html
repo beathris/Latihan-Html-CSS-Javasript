@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .kotakbesar{
+            width: 680px;
+            height: 380px;
+            margin: auto;
+            border: 2px solid black;
+        }
+        .kotakkecil{
+            width: 680px;
+            height:97px;
+            margin: auto;
+            border: 2px solid black;
+            
+        }
+        .kotakkecil .kotak{
+            width:166px;
+            height: 97px;
+            float:right;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="kotakbesar" id="kotakbesar">
+            <img src="" id="gambar" alt="" width="100%">
+        </div>
+        <div class="kotakkecil">
+            <div class="kotak" id="kotak1" onclick="klik1()">
+                <img src="gambar1.jpg"  width="100%">
+            </div>
+            <div class="kotak" id="kotak2"onclick="klik2()">
+                <img src="gambar2.jpg"  width="100%">
+            </div>
+            <div class="kotak" id="kotak3" onclick="klik3()">
+                <img src="gambar3.jpg"  width="100%">
+            </div>
+            <div class="kotak" id="kotak4" onclick="klik4()" >
+                <img src="gambar4.jpg"  width="100%">
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function klik1(){
+            document.getElementById("gambar").src="gambar1.jpg";
+        }
+
+        function klik2(){
+            document.getElementById("gambar").src="gambar2.jpg";
+        }
+
+        function klik3(){
+            document.getElementById("gambar").src="gambar3.jpg";
+        }
+        function klik4(){
+            document.getElementById("gambar").src="gambar4.jpg";
+        }
+    </script>
+</body>
+</html>

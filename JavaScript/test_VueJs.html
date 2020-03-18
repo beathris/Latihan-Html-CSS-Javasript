@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Buat Artikel</h1>
+        <p><input type="text" v-model:value="title"></p>
+        <p><textarea v-model:value="content"></textarea></p>
+        <div class="preview">
+            <h1 v-text="title"></h1>
+            <hr>
+            <div v-html="content"></div>
+            <hr>
+            <p>Konten dalam plain text : </p>
+            <div v-text="content"></div>
+            <hr>
+            <p>Yang ini cuma di render sekali : </p>
+            <div v-once>{{content}}</div>
+        </div>
+    </div>
+   
+
+    <script>
+        var app = new Vue({
+        el: '#app',
+        data: {
+            title: "Tutorial Vuejs",
+            content: "<b>Ini adalah tutorial Vuejs dari nol</b>"
+        }
+        })
+    </script>
+    
+</body>
+</html>

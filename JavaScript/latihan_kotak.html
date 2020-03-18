@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .luar{
+            width: 693px;
+            height: 402px;
+            margin: auto;
+            border:2px solid black;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 689px;
+            height: 300px;
+            padding: 2px 2px 2px 2px;
+            box-sizing: border-box;
+        }
+
+        .kotak1{
+            width: 162px;
+            height:88px;
+            float: left;
+            padding: 2px 2px 2px 2px;
+            margin:1px 1px 1px 1px;
+            border:2px solid;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="luar">
+        <div class="container" id="container">
+
+        </div>
+            <div class="kotak1" id="kotak1" onclick="warna1()" style="border:2px solid red;"></div>
+            <div class="kotak1" id="kotak2" onclick="warna2()" style="border:2px solid blue;"></div>
+            <div class="kotak1" id="kotak3" onclick="warna3()" style="border:2px solid yellow;"></div>
+            <div class="kotak1" id="kotak4" onclick="warna4()" style="border:2px solid green;"></div>
+      
+           
+    </div>
+   
+
+    <script>
+        function warna1(){
+        document.getElementById("container").style.backgroundColor="red";
+        }
+        function warna2(){
+        document.getElementById("container").style.backgroundColor="blue";
+        }
+        function warna3(){
+        document.getElementById("container").style.backgroundColor="yellow";
+        }
+        function warna4(){
+        document.getElementById("container").style.backgroundColor="green";
+        }
+    </script>
+</body>
+</html>

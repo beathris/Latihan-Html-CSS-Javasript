@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bungkus{
+            width: 350px;
+            height: 300px;
+            background-color:mediumaquamarine;
+            margin: auto;
+        }
+        .bungkus h2{
+            margin: 10px 55px;
+        }
+        .bungkus .luar1{
+            width: 300px;
+            height: 30px;
+            background-color: darkolivegreen;
+            margin: 30px 20px;
+            border-radius: 20px;
+        }
+
+        .bungkus .luar1 input{
+            width: 150px;
+            height: 25px;
+            /* background-color:white; */
+            margin: 2px 75px 2px 75px;
+            box-sizing: border-box;
+        }
+
+        .bungkus .luar2{
+            width: 300px;
+            height: 30px;
+            background-color: darkolivegreen;
+            margin: 30px 20px;
+            border-radius: 20px;
+        }
+
+        .bungkus .luar2 input{
+            width: 150px;
+            height: 25px;
+            /* background-color:white; */
+            margin: 2px 75px 2px 75px;
+            box-sizing: border-box;
+        }
+        .bungkus .kotak_tambah{
+            width: 350px;
+            height:50px;
+            margin: 30px 0px 20px 0px;
+            background-color: springgreen;
+        }
+
+        .bungkus .kotak_tambah .tombol{
+            margin: 15px 50px 15px 50px ;
+            padding: 12.5px;
+
+        }
+        .bungkus .hasil h2{
+            text-align: center;
+        }
+
+    </style>
+
+    <script>
+        function operasitambah(){
+            var bilangan1 = document.getElementById("bil1").value;
+            var bilangan2 = document.getElementById("bil2").value;
+            var angka1 =  Number(bilangan1);
+            var angka2 = Number(bilangan2);
+
+            var hasil = angka1 +  angka2;
+            document.getElementById("hasiltext").innerHTML=hasil;
+        }
+        function operasikurang(){
+            var bilangan1 = document.getElementById("bil1").value;
+            var bilangan2 = document.getElementById("bil2").value;
+            var angka1 =  Number(bilangan1);
+            var angka2 = Number(bilangan2);
+
+            var kurang = angka1-angka2;
+            document.getElementById("hasiltext").innerHTML=kurang;
+        }
+
+        function operasikali(){
+            var bilangan1 = document.getElementById("bil1").value;
+            var bilangan2 = document.getElementById("bil2").value;
+            var angka1 =  Number(bilangan1);
+            var angka2 = Number(bilangan2);
+            var kali = angka1 * angka2;
+            document.getElementById("hasiltext").innerHTML=kali;
+        }
+        function operasibagi(){
+            var bilangan1 = document.getElementById("bil1").value;
+            var bilangan2 = document.getElementById("bil2").value;
+            var angka1 =  Number(bilangan1);
+            var angka2 = Number(bilangan2);
+
+            var bagi = angka1/angka2;
+            document.getElementById("hasiltext").innerHTML=bagi;
+        }
+    </script>
+</head>
+<body>
+    <div class="bungkus">
+        <h2>Kalkulator Javascript</h2>
+        <div class="luar1">
+           <input type="text" id="bil1">
+        </div>
+        <div class="luar2">
+           <input type="text" id="bil2">
+        </div>
+        <div class="kotak_tambah">
+          <div class="tombol">
+            <button class="button" type="button" onclick="operasitambah()"> Tambah </button>
+            <button class="button" type="button" onclick="operasikurang()"> Kurang </button>
+            <button class="button" type="button" onclick="operasikali()"> Kali </button>
+            <button class="button" type="button" onclick="operasibagi()"> Bagi </button>
+        
+          </div>  
+        </div>
+        <div class="hasil">
+            <h2 id="hasiltext"></h2>
+        </div>
+        
+    </div>
+</body>
+</html>

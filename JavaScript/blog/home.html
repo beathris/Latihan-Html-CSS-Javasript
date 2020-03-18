@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="vue.js"></script>
+    <style>
+.header{
+    height: 50px;
+    width: 100%;
+    background-color:black;
+    position:fixed;
+    top:0;
+    left:0;
+    padding: 5px;
+}
+.header h1 {
+    font-size:large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:antiquewhite ;
+}
+
+.mainproduct{
+    margin-top: 100px;
+    width: 70%;
+    height: 100%;
+    float:left;
+    position: relative;
+
+}
+.cart{
+    margin-top: 100px;
+    width: 30%;
+    height: 100%;
+    float:left;
+
+}
+.listproduk {
+    width: 150px;
+    height: 200px;
+    float:left;
+    margin:5px 5px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    
+    }
+.thumbnail {
+    width: 100%;
+    height: 50%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.popup{
+    height: 200px;
+    width: 200px;
+    opacity: 0.8;
+    position: absolute;
+    border: black  solid 2px;
+    right: 400px;
+    top: 10px;
+    background-color: chocolate;
+    display: block;
+}
+.popup1{
+    height: 200px;
+    width: 200px;
+    opacity: 0.8;
+    position: absolute;
+    border: black  solid 2px;
+    right: 400px;
+    top: 10px;
+    background-color: chocolate;
+    display: block;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+
+tr:hover {background-color:#f5f5f5;}
+</style>
+</head>
+
+<body>
+    
+<div class="header">
+    <h1> Sparkling Masker</h1>
+</div>
+
+
+<div id="container">
+
+
+<div class="mainproduct">
+
+
+<div class="listproduk" v-for="maskerku in masker">
+
+<div class="thumbnail"> 
+
+    <img v-bind:src="maskerku.image" width="125px" height="100px" >
+</div>
+
+{{maskerku.merek}}
+<br>
+Harga : {{maskerku.harga}}
+
+<button v-on:click="addCart(maskerku.image)" id="addCart" type="button">Beli</button>
+
+</div>
+
+</div>
+<div class="cart">
+    Keranjang Belanja
+<br>
+
+<!-- <table>
+   
+    <tr v-for="merek in keranjangmerek">
+      <td >{{merek}}</td>
+      <td><button  v-on:click="removeCart(index)" type="button">X</button></td>
+      
+    </tr>
+
+
+  </table> -->
+  <table>
+    <tr v-for="(image,index) in keranjangimage">
+        <td ><img v-bind:src="image" width="100px" height="100px"></td>
+        <td><button  v-on:click="removeCart(index)" type="button">X</button></td>
+        
+      </tr>
+      {{qty}}
+  </table>
+
+  
+ <!-- {{keranjangimage}} -->
+
+</div>
+
+
+
+    <div class="popup" v-if="qty>=4">
+        <p>Whoaaa, borong ni ye! :)</p> 
+        <img src="https://img2.pngdownload.id/20180514/lee/kisspng-emoticon-smiley-emoji-clip-art-5afa17e80d67e0.8400290415263395600549.jpg" width="150px" height="100px">
+    </div>
+    <div class="popup1" v-else-if="qty>=2">
+        <p>Beli Lagi Biar dapat Bonus</p> 
+        <img src="https://img2.pngdownload.id/20180514/lee/kisspng-emoticon-smiley-emoji-clip-art-5afa17e80d67e0.8400290415263395600549.jpg" width="150px" height="100px">
+ 
+    </div> 
+
+</div>
+<script>
+
+    var vm = new Vue({   
+             el: '#container',
+             data: {
+                 masker:[
+                     {merek:'Lea Greentea',harga:10000,image:'https://s0.bukalapak.com/img/0349648354/w-1000/MASK_BY_LEA_20_GRAM_KEMASAN_BARU_MASKER_BUBUK_LEA_GLORIA_FAC.jpg'}
+                     ,{merek:'Lea Coffee',harga:34000,image:'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRKkaGsY5_nC7cdY62JHq4eUrA-_4o6pRJDyPyTFOkwG5OHFZ8h'}
+                     ,{merek:'Lea Mud',harga:250000,image:'https://storage.googleapis.com/socomy-production/commerce/models/5cc981014a71d01d2020746b_e307f5b4-4b41-46d7-a64d-56c7d1f2eefd.jpg'}
+                     ,{merek:'Chocolate',harga:100000, image:'https://apollo-singapore.akamaized.net/v1/files/ql1abo3p70jd2-ID/image;s=850x0'}
+                     ,{merek:'Lea Golden',harga:140000,image:'https://apollo-singapore.akamaized.net/v1/files/54rn645jl4tr3-ID/image'}
+                     ,{merek: 'Lea Ice Sorbet', harga:15000, image:'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium//90/MTA-4019912/lea_gloria_murah_---_masker_wajah_bubuk_organik_aroma_ice_sorbet_-_by_lea_gloria_full04.jpg'}
+                     ,{merek: 'Lea Avocado', harga:15000, image:'https://i.pinimg.com/originals/24/db/f3/24dbf31838bd5e91d44c2596fb83ea41.jpg'}
+                     ,{merek: 'Lea Egg White', harga:15000, image:'https://storage.googleapis.com/socomy-production/commerce/models/5cc981014a71d01d2020746b_aa298f54-6324-4629-819b-07dc3de3f716.jpg'}
+                     ,{merek: 'Lea Strawberry', harga:15000, image:'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSVXKj1px0YoUy00GwCh2q1odmSzxfjBJibBrTZZtsh3PNBROKq'}
+                     ,{merek: 'Lea Beetroot', harga:15000, image:'https://ecs7.tokopedia.net/img/cache/700/product-1/2018/12/25/5081381/5081381_f4aa8b92-a69d-4da0-bb27-bfdf87085b2f_1080_1080.jpg'}
+                     ,{merek:'Lea Dragon Fruit', harga:14000, image:'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTPYYY1C6gWJlqO0nnYp4ssNt0EzDFe76otVZk109drxPTYNwGD'}
+                     ,{merek:'Lea Blueberry', harga:14000, image:'https://s1.bukalapak.com/img/13258642461/original/data.jpeg'}
+                     ,{merek:'Lea Dragon Fruit', harga:14000, image:'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTPYYY1C6gWJlqO0nnYp4ssNt0EzDFe76otVZk109drxPTYNwGD'}
+  
+                 ],
+                 keranjangharga:[],
+                 keranjangmerek:[],
+                 keranjangimage:[],
+                 qty:0
+               
+             },
+
+ /*            computed: {
+  total() {
+    return this.keranjangharga.reduce(function (sum, item) {
+        return sum + item
+    }, 0)
+  }
+},  */
+             methods: {
+    
+                 addCart:function(image){
+                    //  this.keranjangharga.push(harga);
+                    //  this.keranjangmerek.push(merek);
+                     this.keranjangimage.push(image);
+                     this.qty+=1;
+                 },
+                 removeCart:function(index){
+                     this.keranjangmerek.splice(index,1)
+
+                     this.keranjangharga.splice(index,1)
+
+                     this.keranjangimage.splice(index,1)
+                     this.qty-=1;
+                 }
+             }    
+        })
+ 
+    </script>
+
+
+
+</body>
+</html>
